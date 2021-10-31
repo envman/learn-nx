@@ -1,6 +1,29 @@
 {
   "version": 2,
   "projects": {
+    "cdk-constructs": {
+      "root": "libs/cdk-constructs",
+      "sourceRoot": "libs/cdk-constructs/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/cdk-constructs/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/cdk-constructs"],
+          "options": {
+            "jestConfig": "libs/cdk-constructs/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "my-stack": {
       "projectType": "application",
       "root": "apps/my-stack",
@@ -30,9 +53,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/my-stack"
-          ],
+          "outputs": ["coverage/apps/my-stack"],
           "options": {
             "jestConfig": "apps/my-stack/jest.config.js",
             "passWithNoTests": true
