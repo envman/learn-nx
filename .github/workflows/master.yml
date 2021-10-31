@@ -25,7 +25,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Deploy CDK Apps
-        run: npx nx affected --target=env --base="${{ steps.last_successful_commit.outputs.commit_hash }}"
+        run: npx nx affected --target=deploy --base="${{ steps.last_successful_commit.outputs.commit_hash }}"
         env:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
