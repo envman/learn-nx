@@ -6,24 +6,13 @@
       "root": "apps/my-stack",
       "sourceRoot": "apps/my-stack/src",
       "targets": {
-        "env": {
-          "executor": "@nrwl/workspace:run-commands",
-          "options": {
-            "cwd": "apps/my-stack",
-            "commands": [
-              {
-                "command": "echo $AWS_REGION"
-              }
-            ]
-          }
-        },
         "deploy": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
             "cwd": "apps/my-stack",
             "commands": [
               {
-                "command": "if [ \"{args.stack}\" = \"undefined\" ]; then cdk deploy --require-approval=never ; else cdk deploy --require-approval=never {args.stack}; fi"
+                "command": "npx cdk deploy --require-approval=never"
               }
             ]
           }
