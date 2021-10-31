@@ -14,7 +14,8 @@ jobs:
         with:
           node-version: '14'
 
-      - run: npm install
+      - uses: bahmutov/npm-install@v1.4.5
+      # - run: npm install
 
       - uses: nrwl/last-successful-commit-action@v1
         id: last_successful_commit
@@ -23,5 +24,13 @@ jobs:
           workflow_id: 'master.yml'
           github_token: ${{ secrets.GITHUB_TOKEN }}
       
+      - name: Deploy CDK Apps
+        run: npx nx affected --target=env --base="${{ steps.last_successful_commit.outputs.commit_hash }}"
+        env:
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_TARGET_ACCOUNT: ${{ secrets.AWS_TARGET_ACCOUNT }}
       # - run: npm run nx affected -- --target=build --base=${{ steps.last_successful_commit.outputs.commit_hash }} --parallel --configuration=production
-      - run: npx nx affected --target=deploy --base="${{ steps.last_successful_commit.outputs.commit_hash }}"
+      # - run: npx nx affected --target=deploy --base="${{ steps.last_successful_commit.outputs.commit_hash }}"
+        
