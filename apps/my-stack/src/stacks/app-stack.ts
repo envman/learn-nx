@@ -1,9 +1,14 @@
+import * as path from 'path';
+
 import * as cdk from '@aws-cdk/core';
+import { NodejsFunction } from '@aws-cdk/aws-lambda-nodejs';
 
 export class AppStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
+    new NodejsFunction(this, 'test-function', {
+      entry: path.join(__dirname, '..', 'lambdas', 'ok.handler.ts')
+    })
   }
 }
