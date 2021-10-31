@@ -15,13 +15,25 @@ jobs:
         with:
           node-version: '14'
       - run: npm install
-      - run: npm i nx
-      - run: cat package.json
-
-      - name: NX Stuff
-        uses: mansagroup/nrwl-nx-action@v2
+      # - run: npm i nx
+      - uses: nrwl/last-successful-commit-action@v1
+        id: last_successful_commit
         with:
-          targets: deploy
+          branch: 'master'
+          workflow_id: 'deploy.yml'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      
+      # - run: npm run nx affected -- --target=build --base=${{ steps.last_successful_commit.outputs.commit_hash }} --parallel --configuration=production
+      - run: npx nx affected -- --target=build --base=${{ steps.last_successful_commit.outputs.commit_hash }} --parallel --configuration=production
+      # - run: npx nx affected --target=deploy
+
+      # - run: cat package.json
+
+
+      # - name: NX Stuff
+      #   uses: mansagroup/nrwl-nx-action@v2
+      #   with:
+      #     targets: deploy
       # - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       # - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       # - name: List files in the repository
