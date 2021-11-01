@@ -14,7 +14,7 @@ export class AppStack extends cdk.Stack {
     })
 
     new PublicBucket(this, 'public-bucket-testing-red', {
-      
+
     })
   }
 }
