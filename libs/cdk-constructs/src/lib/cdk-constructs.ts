@@ -12,6 +12,8 @@ export class PublicBucket extends s3.Bucket {
       blockPublicAccess: new s3.BlockPublicAccess({ restrictPublicBuckets: false }),
     })
 
+    console.log('I am a log!')
+
     const publicBucketPolicy = new iam.PolicyStatement({
       actions: ['s3:GetObject'],
       resources: [`${this.bucketArn}/*`],
