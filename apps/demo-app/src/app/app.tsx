@@ -14,6 +14,8 @@ export function App() {
         <h2>Resources &amp; Tools</h2>
         <p>Thank you for using and showing some ♥ for Nx.</p>
         <div className="flex github-star-container">
+          <h1>Test update</h1>
+
           <a
             href="https://github.com/nrwl/nx"
             target="_blank"
