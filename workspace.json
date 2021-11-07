@@ -92,6 +92,17 @@
             "jestConfig": "apps/demo-app/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "release": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "cwd": "apps/demo-app",
+            "commands": [
+              {
+                "command": "aws s3 cp ./build/ s3://public-bucket-testing-red/ --recursive"
+              }
+            ]
+          }
         }
       },
       "tags": []
