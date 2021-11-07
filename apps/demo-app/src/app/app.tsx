@@ -2,6 +2,7 @@ import styles from './app.module.css';
 
 import { ReactComponent as Logo } from './logo.svg';
 import star from './star.svg';
+import { SharedComponents } from '@learn-nx/shared-components';
 
 export function App() {
   return (
@@ -11,6 +12,8 @@ export function App() {
         <h1>Welcome to testy fun time!</h1>
       </header>
       <main>
+        <SharedComponents></SharedComponents>
+
         <h2>Resources &amp; Tools</h2>
         <p>Thank you for using and showing some ♥ for Nx.</p>
         <div className="flex github-star-container">

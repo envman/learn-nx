@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@learn-nx/shared-components": ["libs/shared-components/src/index.ts"],
       "@testing/cdk-constructs": ["libs/cdk-constructs/src/index.ts"]
     }
   },
