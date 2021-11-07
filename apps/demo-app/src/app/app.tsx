@@ -8,7 +8,7 @@ export function App() {
     <div className={styles.app}>
       <header className="flex">
         <Logo width="75" height="75" />
-        <h1>Welcome to learn-nx demo-app!</h1>
+        <h1>Welcome to testy fun time!</h1>
       </header>
       <main>
         <h2>Resources &amp; Tools</h2>
