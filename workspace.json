@@ -96,10 +96,10 @@
         "release": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "cwd": "apps/demo-app",
+            "cwd": "dist",
             "commands": [
               {
-                "command": "aws s3 cp ./build/ s3://public-bucket-testing-red/ --recursive"
+                "command": "aws s3 cp ./demo-app/ s3://public-bucket-testing-red/ --recursive"
               }
             ]
           }
