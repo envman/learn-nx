@@ -32,6 +32,9 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_TARGET_ACCOUNT: ${{ secrets.AWS_TARGET_ACCOUNT }}
       
+      - name: Build Web Apps
+        run: npx nx affected --target=build --base="${{ steps.last_successful_commit.outputs.commit_hash }}"
+
       - name: Deploy Web Apps
         run: npx nx affected --target=release --base="${{ steps.last_successful_commit.outputs.commit_hash }}"
         env:
